@@ -178,7 +178,7 @@ def generate_html():
 
                 function submitForm() {{
                     let name = $("#name-input").val();
-                    let files = [{",".join([f"'{extract_file_identifier(files[0])}'" for files in get_file_list()])}];
+                    let files = [{",".join([f"'{extract_file_identifier(files[0])}'" for _, files in get_file_list()])}];
                     let csv = "data:text/csv;charset=utf-8,";
                     csv += "filename;q1;q2;q3;q4;q5\\n";
                     csv += buildCsvRow("self_evaluation", getSelfEvaluationResponses());

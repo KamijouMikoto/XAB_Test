@@ -185,12 +185,12 @@
                   <span>Which one of A and B is more similar to X in emotion expression?</span>
                 </p>
                 <div class="custom-control custom-radio form-check-inline">
-                  <input type="radio" id="tts-evaluation-1-1-APDC2-026-03" name="tts-evaluation-1-APDC2-026-03" class="custom-control-input" value="1" required="true" />
-                  <label class="custom-control-label" for="tts-evaluation-1-1-APDC2-026-03">A</label>
+                  <input type="radio" id="tts-evaluation-1-01_APDC2-026-03_amu.wav" name="tts-evaluation-01_APDC2-026-03_amu.wav" class="custom-control-input" value="1" required="true" />
+                  <label class="custom-control-label" for="tts-evaluation-1-APDC2-026-03">A</label>
                 </div>
                 <div class="custom-control custom-radio form-check-inline">
-                  <input type="radio" id="tts-evaluation-1-2-APDC2-026-03" name="tts-evaluation-1-APDC2-026-03" class="custom-control-input" value="2" />
-                  <label class="custom-control-label" for="tts-evaluation-1-2-APDC2-026-03">B</label>
+                  <input type="radio" id="tts-evaluation-2-01_APDC2-026-03_amu.wav" name="tts-evaluation-01_APDC2-026-03_amu.wav" class="custom-control-input" value="2" />
+                  <label class="custom-control-label" for="tts-evaluation-2-01_APDC2-026-03_amu.wav">B</label>
                 </div>
               </div>
             </div>
@@ -225,12 +225,12 @@
                   <span>Which one of A and B is more similar to X in emotion expression?</span>
                 </p>
                 <div class="custom-control custom-radio form-check-inline">
-                  <input type="radio" id="tts-evaluation-1-1-APDC2-026-03" name="tts-evaluation-1-APDC2-026-03" class="custom-control-input" value="1" required="true" />
-                  <label class="custom-control-label" for="tts-evaluation-1-1-APDC2-026-03">A</label>
+                  <input type="radio" id="tts-evaluation-1-02_APDC2-026-03_ang.wav" name="tts-evaluation-02_APDC2-026-03_ang.wav" class="custom-control-input" value="1" required="true" />
+                  <label class="custom-control-label" for="tts-evaluation-1-APDC2-026-03">A</label>
                 </div>
                 <div class="custom-control custom-radio form-check-inline">
-                  <input type="radio" id="tts-evaluation-1-2-APDC2-026-03" name="tts-evaluation-1-APDC2-026-03" class="custom-control-input" value="2" />
-                  <label class="custom-control-label" for="tts-evaluation-1-2-APDC2-026-03">B</label>
+                  <input type="radio" id="tts-evaluation-2-02_APDC2-026-03_ang.wav" name="tts-evaluation-02_APDC2-026-03_ang.wav" class="custom-control-input" value="2" />
+                  <label class="custom-control-label" for="tts-evaluation-2-02_APDC2-026-03_ang.wav">B</label>
                 </div>
               </div>
             </div>
@@ -265,12 +265,12 @@
                   <span>Which one of A and B is more similar to X in emotion expression?</span>
                 </p>
                 <div class="custom-control custom-radio form-check-inline">
-                  <input type="radio" id="tts-evaluation-1-1-APDC2-026-03" name="tts-evaluation-1-APDC2-026-03" class="custom-control-input" value="1" required="true" />
-                  <label class="custom-control-label" for="tts-evaluation-1-1-APDC2-026-03">A</label>
+                  <input type="radio" id="tts-evaluation-1-03_APDC2-026-03_sle.wav" name="tts-evaluation-03_APDC2-026-03_sle.wav" class="custom-control-input" value="1" required="true" />
+                  <label class="custom-control-label" for="tts-evaluation-1-APDC2-026-03">A</label>
                 </div>
                 <div class="custom-control custom-radio form-check-inline">
-                  <input type="radio" id="tts-evaluation-1-2-APDC2-026-03" name="tts-evaluation-1-APDC2-026-03" class="custom-control-input" value="2" />
-                  <label class="custom-control-label" for="tts-evaluation-1-2-APDC2-026-03">B</label>
+                  <input type="radio" id="tts-evaluation-2-03_APDC2-026-03_sle.wav" name="tts-evaluation-03_APDC2-026-03_sle.wav" class="custom-control-input" value="2" />
+                  <label class="custom-control-label" for="tts-evaluation-2-03_APDC2-026-03_sle.wav">B</label>
                 </div>
               </div>
             </div>
@@ -322,7 +322,7 @@
 
                 function submitForm() {
                     let name = $("#name-input").val();
-                    let files = ['03','02','01'];
+                    let files = ['01_APDC2-026-03_amu.wav','02_APDC2-026-03_ang.wav','03_APDC2-026-03_sle.wav'];
                     let csv = "data:text/csv;charset=utf-8,";
                     csv += "filename;q1;q2;q3;q4;q5\n";
                     csv += buildCsvRow("self_evaluation", getSelfEvaluationResponses());
