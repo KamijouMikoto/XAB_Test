@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Speech Evaluation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+  </head>
+  <body>
+    <div class="container pb-5 pt-5">
+      <h1 class="text-center text-success display-1 pt-5 pb-5">Emotional Speech Evaluation</h1>
+      <p class="pt-5">Thank you for your time and welcome to the subjective evaluation of our emotional speech samples!</p>
+      <p>First, you will need to answer 5 questions about yourself to make us know you more.
+                    Then you will hear overall 80 audio samples, for each of which you are invited to answer 5 questions.
+                    If you are uncertain about an answer listen to the audio sample multiple times.
+                    </p>
+      <p>It is highly recommended to wear headphones during the evaluation.
+                    </p>
+      <p>
+        <span>After you click ‘Submit’, all your answers will be recorded, and a CSV file will be
+                    downloaded. Please send the CSV file to 
+                    </span>
+        <a href="mailto:zijiang.yang@informatik.uni-augsburg.de?subject=Emotional Speech Evalution" target="_blank" rel="noopener noreferrer">zijiang.yang@informatik.uni-augsburg.de</a>
+        <span>. Thanks for your help!</span>
+      </p>
+      <p>Note: Please answer all questions. ‘Submit’ button will bring you back to the unfinished questions.</p>
+      <form class="pt-5 pb-5" id="evaluation-form" action="#" onsubmit="return submitForm();">
+        <div class="form-group col-md-4">
+          <label for="name-input">Name</label>
+          <input id="name-input" class="form-control" type="text" placeholder="Jane Smith" required="true" />
+        </div>
+        <div class="form-group col-md-8">
+          <div class="card mt-5">
+            <div class="card-body">
+              <p class="pb-3">I am an empathic person, e.g. I get sad or angry during dramatic scenes in movies.</p>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-0-1" name="self-evaluation-0" class="custom-control-input" value="1" required="true" />
+                <label class="custom-control-label" for="self-evaluation-0-1">1 — Strongly disagree</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-0-2" name="self-evaluation-0" class="custom-control-input" value="2" />
+                <label class="custom-control-label" for="self-evaluation-0-2">2 — Disagree</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-0-3" name="self-evaluation-0" class="custom-control-input" value="3" />
+                <label class="custom-control-label" name="self-evaluation-0" for="self-evaluation-0-3">3 — Neutral</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-0-4" name="self-evaluation-0" class="custom-control-input" value="4" />
+                <label class="custom-control-label" for="self-evaluation-0-4">4 — Agree</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-0-5" name="self-evaluation-0" class="custom-control-input" value="5" />
+                <label class="custom-control-label" for="self-evaluation-0-5">5 — Strongly agree</label>
+              </div>
+            </div>
+          </div>
+          <div class="card mt-5">
+            <div class="card-body">
+              <p class="pb-3">I can easily hear and identify how a person feels in a phone conversation. I don’t need to see them to recognize their emotions.</p>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-1-1" name="self-evaluation-1" class="custom-control-input" value="1" required="true" />
+                <label class="custom-control-label" for="self-evaluation-1-1">1 — Strongly disagree</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-1-2" name="self-evaluation-1" class="custom-control-input" value="2" />
+                <label class="custom-control-label" for="self-evaluation-1-2">2 — Disagree</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-1-3" name="self-evaluation-1" class="custom-control-input" value="3" />
+                <label class="custom-control-label" name="self-evaluation-1" for="self-evaluation-1-3">3 — Neutral</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-1-4" name="self-evaluation-1" class="custom-control-input" value="4" />
+                <label class="custom-control-label" for="self-evaluation-1-4">4 — Agree</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-1-5" name="self-evaluation-1" class="custom-control-input" value="5" />
+                <label class="custom-control-label" for="self-evaluation-1-5">5 — Strongly agree</label>
+              </div>
+            </div>
+          </div>
+          <div class="card mt-5">
+            <div class="card-body">
+              <p class="pb-3">I am musically trained, e.g. I can play a musical instrument.</p>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-2-1" name="self-evaluation-2" class="custom-control-input" value="1" required="true" />
+                <label class="custom-control-label" for="self-evaluation-2-1">1 — Strongly disagree</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-2-2" name="self-evaluation-2" class="custom-control-input" value="2" />
+                <label class="custom-control-label" for="self-evaluation-2-2">2 — Disagree</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-2-3" name="self-evaluation-2" class="custom-control-input" value="3" />
+                <label class="custom-control-label" name="self-evaluation-2" for="self-evaluation-2-3">3 — Neutral</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-2-4" name="self-evaluation-2" class="custom-control-input" value="4" />
+                <label class="custom-control-label" for="self-evaluation-2-4">4 — Agree</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-2-5" name="self-evaluation-2" class="custom-control-input" value="5" />
+                <label class="custom-control-label" for="self-evaluation-2-5">5 — Strongly agree</label>
+              </div>
+            </div>
+          </div>
+          <div class="card mt-5">
+            <div class="card-body">
+              <p class="pb-3">High audio quality in media is important to me, e.g. I own high-end speakers.</p>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-3-1" name="self-evaluation-3" class="custom-control-input" value="1" required="true" />
+                <label class="custom-control-label" for="self-evaluation-3-1">1 — Strongly disagree</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-3-2" name="self-evaluation-3" class="custom-control-input" value="2" />
+                <label class="custom-control-label" for="self-evaluation-3-2">2 — Disagree</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-3-3" name="self-evaluation-3" class="custom-control-input" value="3" />
+                <label class="custom-control-label" name="self-evaluation-3" for="self-evaluation-3-3">3 — Neutral</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-3-4" name="self-evaluation-3" class="custom-control-input" value="4" />
+                <label class="custom-control-label" for="self-evaluation-3-4">4 — Agree</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-3-5" name="self-evaluation-3" class="custom-control-input" value="5" />
+                <label class="custom-control-label" for="self-evaluation-3-5">5 — Strongly agree</label>
+              </div>
+            </div>
+          </div>
+          <div class="card mt-5">
+            <div class="card-body">
+              <p class="pb-3">I am good at predicting other people’s behavior , e.g. I know how my actions will make others feel.</p>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-4-1" name="self-evaluation-4" class="custom-control-input" value="1" required="true" />
+                <label class="custom-control-label" for="self-evaluation-4-1">1 — Strongly disagree</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-4-2" name="self-evaluation-4" class="custom-control-input" value="2" />
+                <label class="custom-control-label" for="self-evaluation-4-2">2 — Disagree</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-4-3" name="self-evaluation-4" class="custom-control-input" value="3" />
+                <label class="custom-control-label" name="self-evaluation-4" for="self-evaluation-4-3">3 — Neutral</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-4-4" name="self-evaluation-4" class="custom-control-input" value="4" />
+                <label class="custom-control-label" for="self-evaluation-4-4">4 — Agree</label>
+              </div>
+              <div class="custom-control custom-radio form-check-inline">
+                <input type="radio" id="self-evaluation-4-5" name="self-evaluation-4" class="custom-control-input" value="5" />
+                <label class="custom-control-label" for="self-evaluation-4-5">5 — Strongly agree</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h4 class="mt-5 pt-5 text-success">Emotional Speech Evalution</h4>
+        <div class="card mt-5 bg-light bg-gradient">
+          <div class="card-body">
+            <h5 class="cart-title mb-5">Sample 1</h5>
+            <div class="row">
+              <div class="col-lg-4 align-self-center">
+                <div class="text-center">
+                  <h6>X</h6>
+                  <audio controls="true" src="samples/01_X_APDC2-026-03_ang.wav" class="mb-5"></audio>
+                </div>
+              </div>
+              <div class="col-lg-4 align-self-center">
+                <div class="text-center">
+                  <h6>A</h6>
+                  <audio controls="true" src="samples/01_A_APDC2-026-03_amu.wav" class="mb-5"></audio>
+                </div>
+              </div>
+              <div class="col-lg-4 align-self-center">
+                <div class="text-center">
+                  <h6>B</h6>
+                  <audio controls="true" src="samples/01_B_APDC2-026-03_amu.wav" class="mb-5"></audio>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="align-self-center text-center">
+                <p class="pb-1">
+                  <span>Which one of A and B is more similar to X in emotion expression?</span>
+                </p>
+                <div class="custom-control custom-radio form-check-inline">
+                  <input type="radio" id="tts-evaluation-1-1-APDC2-026-03" name="tts-evaluation-1-APDC2-026-03" class="custom-control-input" value="1" required="true" />
+                  <label class="custom-control-label" for="tts-evaluation-1-1-APDC2-026-03">A</label>
+                </div>
+                <div class="custom-control custom-radio form-check-inline">
+                  <input type="radio" id="tts-evaluation-1-2-APDC2-026-03" name="tts-evaluation-1-APDC2-026-03" class="custom-control-input" value="2" />
+                  <label class="custom-control-label" for="tts-evaluation-1-2-APDC2-026-03">B</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mt-5 bg-secondary bg-gradient text-white">
+          <div class="card-body">
+            <h5 class="cart-title mb-5">Sample 2</h5>
+            <div class="row">
+              <div class="col-lg-4 align-self-center">
+                <div class="text-center">
+                  <h6>X</h6>
+                  <audio controls="true" src="samples/02_X_APDC2-026-03_dis.wav" class="mb-5"></audio>
+                </div>
+              </div>
+              <div class="col-lg-4 align-self-center">
+                <div class="text-center">
+                  <h6>A</h6>
+                  <audio controls="true" src="samples/02_A_APDC2-026-03_ang.wav" class="mb-5"></audio>
+                </div>
+              </div>
+              <div class="col-lg-4 align-self-center">
+                <div class="text-center">
+                  <h6>B</h6>
+                  <audio controls="true" src="samples/02_B_APDC2-026-03_dis.wav" class="mb-5"></audio>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="align-self-center text-center">
+                <p class="pb-1">
+                  <span>Which one of A and B is more similar to X in emotion expression?</span>
+                </p>
+                <div class="custom-control custom-radio form-check-inline">
+                  <input type="radio" id="tts-evaluation-1-1-APDC2-026-03" name="tts-evaluation-1-APDC2-026-03" class="custom-control-input" value="1" required="true" />
+                  <label class="custom-control-label" for="tts-evaluation-1-1-APDC2-026-03">A</label>
+                </div>
+                <div class="custom-control custom-radio form-check-inline">
+                  <input type="radio" id="tts-evaluation-1-2-APDC2-026-03" name="tts-evaluation-1-APDC2-026-03" class="custom-control-input" value="2" />
+                  <label class="custom-control-label" for="tts-evaluation-1-2-APDC2-026-03">B</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mt-5 bg-light bg-gradient">
+          <div class="card-body">
+            <h5 class="cart-title mb-5">Sample 3</h5>
+            <div class="row">
+              <div class="col-lg-4 align-self-center">
+                <div class="text-center">
+                  <h6>X</h6>
+                  <audio controls="true" src="samples/03_X_APDC2-088-04_amu.wav" class="mb-5"></audio>
+                </div>
+              </div>
+              <div class="col-lg-4 align-self-center">
+                <div class="text-center">
+                  <h6>A</h6>
+                  <audio controls="true" src="samples/03_A_APDC2-026-03_sle.wav" class="mb-5"></audio>
+                </div>
+              </div>
+              <div class="col-lg-4 align-self-center">
+                <div class="text-center">
+                  <h6>B</h6>
+                  <audio controls="true" src="samples/03_B_APDC2-026-03_sle.wav" class="mb-5"></audio>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="align-self-center text-center">
+                <p class="pb-1">
+                  <span>Which one of A and B is more similar to X in emotion expression?</span>
+                </p>
+                <div class="custom-control custom-radio form-check-inline">
+                  <input type="radio" id="tts-evaluation-1-1-APDC2-026-03" name="tts-evaluation-1-APDC2-026-03" class="custom-control-input" value="1" required="true" />
+                  <label class="custom-control-label" for="tts-evaluation-1-1-APDC2-026-03">A</label>
+                </div>
+                <div class="custom-control custom-radio form-check-inline">
+                  <input type="radio" id="tts-evaluation-1-2-APDC2-026-03" name="tts-evaluation-1-APDC2-026-03" class="custom-control-input" value="2" />
+                  <label class="custom-control-label" for="tts-evaluation-1-2-APDC2-026-03">B</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="from-group mt-5">
+          <label _for="open-comments">Please leave your general opinion about the speeches here. We are also happy to hear your valuable suggestions. Thanks!</label>
+          <textarea class="form-control" id="open-comments" name="open-comments" placeholder="(Optional)" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-5">Submit</button>
+        <p class="mt-3">
+          <span>Please send the generated CSV file to </span>
+          <a href="mailto:zijiang.yang@informatik.uni-augsburg.de?subject=Emotional Speech Evalution" target="_blank" rel="noopener noreferrer">zijiang.yang@informatik.uni-augsburg.de</a>
+          <span>. Thanks for your help!</span>
+        </p>
+      </form>
+    </div>
+  </body>
+  <script>
+    
+                function clearForm() {
+                    document.getElementById("evaluation-form").reset();
+                }
+
+                function buildCsvRow(fileName, questionResponses) {
+                    return `${fileName};${questionResponses[0]};${questionResponses[1]};${questionResponses[2]};${questionResponses[3]};${questionResponses[4]}\n`
+                }
+
+                function getQuestionResponse(input_name) {
+                    return $(`input[name="${input_name}"]:checked`).val();
+                }
+
+                function getSelfEvaluationResponses() {
+                    return [getQuestionResponse('self-evaluation-0'),getQuestionResponse('self-evaluation-1'),getQuestionResponse('self-evaluation-2'),getQuestionResponse('self-evaluation-3'),getQuestionResponse('self-evaluation-4')];
+                }
+
+                function getTtsEvaluationResponsesForFile(file_name) {
+                    return [getQuestionResponse(`tts-evaluation-1-${file_name}`),getQuestionResponse(`tts-evaluation-2-${file_name}`),getQuestionResponse(`tts-evaluation-3-${file_name}`),getQuestionResponse(`tts-evaluation-4-${file_name}`),getQuestionResponse(`tts-evaluation-5-${file_name}`)];
+                }
+
+                function getOpenComments() {
+                    let comments = $(`textarea[name="open-comments"]`).val();
+                    if ("" === comments) {
+                        return "(Optional)\n";
+                    } else {
+                        return comments.replace(/\r?\n|\r/g, " ") + "\n";
+                    }
+                }
+
+                function submitForm() {
+                    let name = $("#name-input").val();
+                    let files = ['03','02','01'];
+                    let csv = "data:text/csv;charset=utf-8,";
+                    csv += "filename;q1;q2;q3;q4;q5\n";
+                    csv += buildCsvRow("self_evaluation", getSelfEvaluationResponses());
+                    for (let i = 0; i < files.length; i++) {
+                        csv += buildCsvRow(files[i], getTtsEvaluationResponsesForFile(files[i]));
+                    }
+                    csv += getOpenComments();
+                    let encodedUri = encodeURI(csv);
+                    let downloadLink = document.createElement("a");
+                    downloadLink.setAttribute("download", `${name}_results.csv`);
+                    downloadLink.setAttribute("href", encodedUri);
+                    document.body.appendChild(downloadLink);
+                    downloadLink.click();
+                    downloadLink.remove();
+                    return false;
+                }
+                
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</html>
