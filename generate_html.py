@@ -41,14 +41,15 @@ def generate_html():
             a.link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6", crossorigin="anonymous")
         with a.body():
             with a.div(klass="container pb-5 pt-5"):
-                a.h1(_t="Emotional Speech Evaluation", klass="text-center text-success display-1 pt-5 pb-5")
+                a.h1(_t="Emotional Speech Similarity Test", klass="text-center text-success display-1 pt-5 pb-5")
                 a.p(
-                    _t="Thank you for your time and welcome to the subjective evaluation of our emotional speech samples!",
+                    _t="Thank you for your time and welcome to the similarity test of our emotional speech samples!",
                     klass="pt-5"
                 )
                 a.p(
                     _t="""First, you will need to answer 5 questions about yourself to make us know you more.
-                    Then you will hear overall 80 audio samples, for each of which you are invited to answer 5 questions.
+                    Then you will hear 60 sets of audio samples, including X, A and B.
+                    You will need to choose the speech which is more similar to X in emotion expression.
                     If you are uncertain about an answer listen to the audio sample multiple times.
                     """
                 )
@@ -145,7 +146,7 @@ def generate_html():
                             rel="noopener noreferrer"
                         )
                         a.span(
-                            _t=". Thanks for your help!"
+                            _t=". Your email address will not be collected or linked with the data. Thanks for your help!"
                         )
         with a.script():
             a(
