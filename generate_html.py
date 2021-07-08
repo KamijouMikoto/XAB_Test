@@ -95,7 +95,7 @@ def generate_html():
                                     with a.div(klass="custom-control custom-radio form-check-inline"):
                                         a.input(type="radio", id=f"self-evaluation-{index}-5", name=f"self-evaluation-{index}", klass="custom-control-input", value=5)
                                         a.label(_t="5 — Strongly agree", klass="custom-control-label", for_=f"self-evaluation-{index}-5")
-                    a.h4(_t="Emotional Speech Evalution", klass="mt-5 pt-5 text-success")
+                    a.h4(_t="Emotional Speech Similarity Test", klass="mt-5 pt-5 text-success")
                     for index, (_, files) in enumerate(get_file_list()):
                         if index % 2 == 1:
                             color_scheme = "bg-secondary bg-gradient text-white"
