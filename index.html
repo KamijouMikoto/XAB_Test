@@ -186,11 +186,15 @@
                 </p>
                 <div class="custom-control custom-radio form-check-inline">
                   <input type="radio" id="tts-evaluation-1-01_APDC2-026-03_ang.wav" name="tts-evaluation-01_APDC2-026-03_ang.wav" class="custom-control-input" value="1" required="true" />
-                  <label class="custom-control-label" for="tts-evaluation-1-APDC2-026-03">A</label>
+                  <label class="custom-control-label" for="tts-evaluation-1-01_APDC2-026-03_ang.wav">A</label>
                 </div>
                 <div class="custom-control custom-radio form-check-inline">
                   <input type="radio" id="tts-evaluation-2-01_APDC2-026-03_ang.wav" name="tts-evaluation-01_APDC2-026-03_ang.wav" class="custom-control-input" value="2" />
                   <label class="custom-control-label" for="tts-evaluation-2-01_APDC2-026-03_ang.wav">B</label>
+                </div>
+                <div class="custom-control custom-radio form-check-inline">
+                  <input type="radio" id="tts-evaluation-0-01_APDC2-026-03_ang.wav" name="tts-evaluation-01_APDC2-026-03_ang.wav" class="custom-control-input" value="0" />
+                  <label class="custom-control-label" for="tts-evaluation-0-01_APDC2-026-03_ang.wav">Hard to tell</label>
                 </div>
               </div>
             </div>
@@ -226,11 +230,15 @@
                 </p>
                 <div class="custom-control custom-radio form-check-inline">
                   <input type="radio" id="tts-evaluation-1-02_APDC2-026-03_dis.wav" name="tts-evaluation-02_APDC2-026-03_dis.wav" class="custom-control-input" value="1" required="true" />
-                  <label class="custom-control-label" for="tts-evaluation-1-APDC2-026-03">A</label>
+                  <label class="custom-control-label" for="tts-evaluation-1-02_APDC2-026-03_dis.wav">A</label>
                 </div>
                 <div class="custom-control custom-radio form-check-inline">
                   <input type="radio" id="tts-evaluation-2-02_APDC2-026-03_dis.wav" name="tts-evaluation-02_APDC2-026-03_dis.wav" class="custom-control-input" value="2" />
                   <label class="custom-control-label" for="tts-evaluation-2-02_APDC2-026-03_dis.wav">B</label>
+                </div>
+                <div class="custom-control custom-radio form-check-inline">
+                  <input type="radio" id="tts-evaluation-0-02_APDC2-026-03_dis.wav" name="tts-evaluation-02_APDC2-026-03_dis.wav" class="custom-control-input" value="0" />
+                  <label class="custom-control-label" for="tts-evaluation-0-02_APDC2-026-03_dis.wav">Hard to tell</label>
                 </div>
               </div>
             </div>
@@ -266,11 +274,15 @@
                 </p>
                 <div class="custom-control custom-radio form-check-inline">
                   <input type="radio" id="tts-evaluation-1-03_APDC2-026-03_sle.wav" name="tts-evaluation-03_APDC2-026-03_sle.wav" class="custom-control-input" value="1" required="true" />
-                  <label class="custom-control-label" for="tts-evaluation-1-APDC2-026-03">A</label>
+                  <label class="custom-control-label" for="tts-evaluation-1-03_APDC2-026-03_sle.wav">A</label>
                 </div>
                 <div class="custom-control custom-radio form-check-inline">
                   <input type="radio" id="tts-evaluation-2-03_APDC2-026-03_sle.wav" name="tts-evaluation-03_APDC2-026-03_sle.wav" class="custom-control-input" value="2" />
                   <label class="custom-control-label" for="tts-evaluation-2-03_APDC2-026-03_sle.wav">B</label>
+                </div>
+                <div class="custom-control custom-radio form-check-inline">
+                  <input type="radio" id="tts-evaluation-0-03_APDC2-026-03_sle.wav" name="tts-evaluation-03_APDC2-026-03_sle.wav" class="custom-control-input" value="0" />
+                  <label class="custom-control-label" for="tts-evaluation-0-03_APDC2-026-03_sle.wav">Hard to tell</label>
                 </div>
               </div>
             </div>
@@ -307,8 +319,8 @@
                     return [getQuestionResponse('self-evaluation-0'),getQuestionResponse('self-evaluation-1'),getQuestionResponse('self-evaluation-2'),getQuestionResponse('self-evaluation-3'),getQuestionResponse('self-evaluation-4')];
                 }
 
-                function getTtsEvaluationResponsesForFile(file_name) {
-                    return [getQuestionResponse(`tts-evaluation-1-${file_name}`),getQuestionResponse(`tts-evaluation-2-${file_name}`),getQuestionResponse(`tts-evaluation-3-${file_name}`),getQuestionResponse(`tts-evaluation-4-${file_name}`),getQuestionResponse(`tts-evaluation-5-${file_name}`)];
+                function getXabResponse(file_identifier) {
+                    return $(`input[name="tts-evaluation-${file_identifier}"]:checked`).val();
                 }
 
                 function getOpenComments() {
@@ -327,7 +339,7 @@
                     csv += "filename;q1;q2;q3;q4;q5\n";
                     csv += buildCsvRow("self_evaluation", getSelfEvaluationResponses());
                     for (let i = 0; i < files.length; i++) {
-                        csv += buildCsvRow(files[i], getTtsEvaluationResponsesForFile(files[i]));
+                        csv += buildCsvRow(files[i], getXabResponse(files[i]));
                     }
                     csv += getOpenComments();
                     let encodedUri = encodeURI(csv);
