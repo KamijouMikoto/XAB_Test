@@ -125,10 +125,13 @@ def generate_html():
                                             a.span(_t="Which one of A and B is more similar to X in emotion expression?")
                                         with a.div(klass="custom-control custom-radio form-check-inline"):
                                             a.input(type="radio", id=f"tts-evaluation-1-{extract_file_identifier(files[0])}", name=f"tts-evaluation-{extract_file_identifier(files[0])}", klass="custom-control-input", value=1, required=True)
-                                            a.label(_t="A", klass="custom-control-label", for_=f"tts-evaluation-1-{files[0].split('_')[2]}")
+                                            a.label(_t="A", klass="custom-control-label", for_=f"tts-evaluation-1-{extract_file_identifier(files[0])}")
                                         with a.div(klass="custom-control custom-radio form-check-inline"):
                                             a.input(type="radio", id=f"tts-evaluation-2-{extract_file_identifier(files[0])}", name=f"tts-evaluation-{extract_file_identifier(files[0])}", klass="custom-control-input", value=2)
                                             a.label(_t="B", klass="custom-control-label", for_=f"tts-evaluation-2-{extract_file_identifier(files[0])}")
+                                        with a.div(klass="custom-control custom-radio form-check-inline"):
+                                            a.input(type="radio", id=f"tts-evaluation-0-{extract_file_identifier(files[0])}", name=f"tts-evaluation-{extract_file_identifier(files[0])}", klass="custom-control-input", value=0)
+                                            a.label(_t="Hard to tell", klass="custom-control-label", for_=f"tts-evaluation-0-{extract_file_identifier(files[0])}")
                     with a.div(klass="from-group mt-5"):
                         a.label(_for="open-comments", _t="Please leave your general opinion about the speeches here. We are also happy to hear your valuable suggestions. Thanks!")
                         a.textarea(klass="form-control", id="open-comments", name="open-comments", placeholder="(Optional)", rows="3")
@@ -163,8 +166,8 @@ def generate_html():
                     return [{",".join([f"getQuestionResponse('self-evaluation-{index}')" for index in range(5)])}];
                 }}
 
-                function getTtsEvaluationResponsesForFile(file_name) {{
-                    return [{",".join([f"getQuestionResponse(`tts-evaluation-{index}-${{file_name}}`)" for index in range(1, 6)])}];
+                function getXabResponse(file_identifier) {{
+                    return $(`input[name="tts-evaluation-${{file_identifier}}"]:checked`).val();
                 }}
 
                 function getOpenComments() {{
@@ -183,7 +186,7 @@ def generate_html():
                     csv += "filename;q1;q2;q3;q4;q5\\n";
                     csv += buildCsvRow("self_evaluation", getSelfEvaluationResponses());
                     for (let i = 0; i < files.length; i++) {{
-                        csv += buildCsvRow(files[i], getTtsEvaluationResponsesForFile(files[i]));
+                        csv += buildCsvRow(files[i], getXabResponse(files[i]));
                     }}
                     csv += getOpenComments();
                     let encodedUri = encodeURI(csv);
